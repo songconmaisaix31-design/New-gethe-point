@@ -44,6 +44,10 @@ interface SessionResponse {
     name: string;
     memberCount: number;
   };
+  member?: {
+    memberId: string;
+    displayName: string;
+  };
   avatar?: { kind: "preset"; presetId: AvatarPresetId } | { kind: "upload"; assetId: string };
 }
 
@@ -52,7 +56,7 @@ type AvatarForm = "family" | "work";
 type AvatarPresetId = `${AvatarRole}-${AvatarForm}`;
 ```
 
-The session never exposes other families that a key did not select.
+The session never exposes other families that a key did not select. Production membership is resolved server-side after authentication and explicit member setup; the browser cannot claim an arbitrary `memberId`. The static prototype substitutes one of three allowlisted public Fixture account IDs and labels this choice as non-production scenario data.
 The `work` suffix identifies a static visual form only; it does not select a work workspace or alter authorization.
 
 ### `POST /api/session/setup`

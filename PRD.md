@@ -4,6 +4,20 @@
 
 Replace manual schedule entry with a conversation-first flow. A person can type to the Agent, dictate into the composer, or record a voice message that is transcribed and sent. The Agent turns the message into a reviewable schedule draft, then writes the confirmed event to the shared timeline and notifies only the selected people.
 
+## AI by Her challenge entry point
+
+The prototype addresses one challenge from the Ant Foundation brief: a daughter living away from home wants her parents to share health updates, medication arrangements, and unfinished conversations more reliably.
+
+The product does not diagnose, interpret measurements, recommend treatment, or infer consent. It reduces coordination loss by turning a family member's words into a reviewable reminder, keeping recipients explicit, and separating a local notification receipt from delivery, reading, and human confirmation.
+
+The public Fixture contains three fictional role accounts in one family:
+
+- `daughter-away`: the family member coordinating care from another city;
+- `mother-home`: the mother sharing only the updates she chooses to share;
+- `father-home`: the father helping with appointments and medication checks.
+
+These are scenario identities, not real user registrations or third-party accounts. Selecting one changes the current demo perspective only and grants no production authority.
+
 ## Core user journey
 
 1. The person tells the Agent what should happen, when it should happen, and who should know.
@@ -53,6 +67,8 @@ Identity acceptance criteria:
 
 - The application content is unavailable until setup is complete.
 - One valid key resolves one family; the client never offers a cross-family picker or guesses a match.
+- The matched family offers exactly three clearly fictional challenge accounts before avatar selection.
+- Refresh restores only an allowlisted Fixture account ID and avatar; unknown account IDs fail closed to sign-in.
 - A person chooses any of the six roles' static family or professional forms, or a local PNG, JPEG, or WebP image, before entry.
 - The local prototype persists only the fictional family ID and selected avatar for the browser session.
 - Signing out clears the local prototype session and returns to the login gate.

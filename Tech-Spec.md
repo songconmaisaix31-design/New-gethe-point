@@ -9,6 +9,7 @@ The prototype is a dependency-free static web application:
 - `app/app.js`: conversation state, deterministic draft extraction, confirmation, notification receipts, and browser speech capability handling.
 - `app/assets/family-work/`: 12 verified static SVG avatar endpoints; transition SVGs are intentionally excluded.
 - `app/app.js` session setup: public family-key fixture, unique family confirmation, custom avatar choice, and session-only persistence.
+- `app/app.js` challenge accounts: three allowlisted fictional role IDs select the current family perspective before avatar setup; they are not credentials or authorization records.
 - `app/index.html` connection center: truthful platform capability and installation-state presentation.
 - `contracts/channel-gateway.openapi.yaml`: canonical custom-bot ingress and delivery-webhook contract.
 - `docs/integration-gateway.md`: routing, identity, privacy, reliability, and platform-adapter boundaries.
@@ -22,12 +23,14 @@ This is the shortest reliable path for validating the conversation and motion mo
 ## Authentication state model
 
 ```text
-signed_out -> key_verification -> family_confirmation -> avatar_selection -> signed_in
-     ^                                                                    |
-     `------------------------------ sign_out ----------------------------'
+signed_out -> key_verification -> family_confirmation -> account_selection -> avatar_selection -> signed_in
+     ^                                                                                         |
+     `----------------------------------------- sign_out --------------------------------------'
 ```
 
-The prototype uses `sessionStorage` only for a fictional family ID and selected avatar. It clears the entered key after matching. Production uses server-side session state with a secure, HTTP-only, same-site cookie and never returns or persists the raw family key.
+The prototype uses `sessionStorage` only for a fictional family ID, an allowlisted Fixture account ID, and the selected avatar. It clears the entered key after matching. Production uses server-side session state with a secure, HTTP-only, same-site cookie and never returns or persists the raw family key.
+
+The three Fixture accounts are `daughter-away`, `mother-home`, and `father-home`. They provide distinct names and default perspectives for the Ant Foundation care-coordination scenario, but all use the same local data and capability set. They never represent real people, identity proofing, platform pairing, or access control.
 
 The production flow requires a backend because rate limiting, keyed hashing, binding resolution, session issuance, and revocation cannot be safely implemented in this static browser application. `DEMO-HOME` is an explicitly public UI fixture, not a production credential.
 

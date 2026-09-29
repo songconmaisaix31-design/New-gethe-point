@@ -1,0 +1,78 @@
+:root {
+  --p2m-duration: 1600ms;
+  --p2m-ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --p2m-ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#person,
+#laptop-screen,
+#laptop-base {
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+#person {
+  animation: person-arrive var(--p2m-duration) var(--p2m-ease-enter) both;
+}
+
+#laptop-screen {
+  transform-origin: 12% 92%;
+  animation: screen-open var(--p2m-duration) var(--p2m-ease-enter) both;
+}
+
+#laptop-base {
+  animation: base-arrive var(--p2m-duration) var(--p2m-ease-settle) both;
+}
+
+@keyframes person-arrive {
+  0%, 14% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); /* enter */
+  }
+  62% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.006);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); /* settle */
+  }
+  82% {
+    opacity: 1;
+    transform: translateY(1px) scale(0.998);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); /* settle */
+  }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes screen-open {
+  0%, 24% {
+    opacity: 0;
+    transform: translateX(-18px) translateY(8px) rotate(-5deg) scale(0.96);
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); /* enter */
+  }
+  68% {
+    opacity: 1;
+    transform: translateX(2px) translateY(-1px) rotate(0.6deg) scale(1.008);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); /* settle */
+  }
+  86% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(-0.2deg) scale(1);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); /* settle */
+  }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes base-arrive {
+  0%, 38% {
+    opacity: 0;
+    transform: translateX(-14px) scaleX(0.72);
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); /* enter */
+  }
+  74% {
+    opacity: 1;
+    transform: translateX(1px) scaleX(1.01);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); /* settle */
+  }
+  100% { opacity: 1; transform: none; }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gethe-point.local/schemas/robot-command.json",
+  "title": "A3 Robot Command",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "template", "data", "priority"],
+      "properties": {
+        "action": { "const": "speak" },
+        "priority": { "enum": ["normal", "high", "urgent"] },
+        "template": { "const": "care_reminder" },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title", "instruction"],
+          "properties": {
+            "title": { "type": ["string", "number", "boolean"] },
+            "instruction": { "type": ["string", "number", "boolean"] }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "template", "data", "priority"],
+      "properties": {
+        "action": { "const": "speak" },
+        "priority": { "enum": ["normal", "high", "urgent"] },
+        "template": { "const": "escalation" },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["subjectName", "title"],
+          "properties": {
+            "subjectName": { "type": ["string", "number", "boolean"] },
+            "title": { "type": ["string", "number", "boolean"] }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "template", "data", "priority"],
+      "properties": {
+        "action": { "const": "speak" },
+        "priority": { "enum": ["normal", "high", "urgent"] },
+        "template": { "const": "handover_confirm" },
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["domainName"],
+          "properties": {
+            "domainName": { "type": ["string", "number", "boolean"] }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "traceId"],
+      "properties": {
+        "action": { "enum": ["status", "stop"] },
+        "traceId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,199}$"
+        }
+      }
+    }
+  ]
+}

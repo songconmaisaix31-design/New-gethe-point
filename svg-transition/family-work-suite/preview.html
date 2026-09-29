@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Family ↔ Work SVG Suite</title>
+    <style>
+      :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #181714; background: #f3efe7; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-width: 0; padding: 32px; }
+      main { width: min(1280px, 100%); min-width: 0; margin: 0 auto; }
+      header { display: flex; gap: 24px; align-items: end; justify-content: space-between; margin-bottom: 30px; }
+      h1 { margin: 0 0 8px; font-size: clamp(32px, 5vw, 64px); letter-spacing: -.055em; line-height: .98; }
+      .intro { max-width: 680px; margin: 0; color: #696158; font-size: 16px; line-height: 1.55; }
+      .role { min-width: 0; margin: 0 0 24px; padding: 20px; border: 1px solid #ddd5c9; border-radius: 28px; background: rgba(255,255,255,.72); box-shadow: 0 18px 50px rgba(57,44,29,.07); }
+      .role-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+      .role-heading span { color: #8b5e3c; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+      h2 { margin: 2px 0 0; font-size: 26px; letter-spacing: -.035em; }
+      button { min-height: 40px; padding: 0 16px; border: 1px solid #ccc1b3; border-radius: 999px; color: #28231e; background: #fff; font: inherit; font-size: 13px; font-weight: 650; cursor: pointer; }
+      button:hover { background: #f6efe7; }
+      .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; min-width: 0; }
+      .card { min-width: 0; padding: 12px; border: 1px solid #e4ddd3; border-radius: 18px; background: #fff; }
+      .stage { display: grid; place-items: center; width: 100%; min-width: 0; aspect-ratio: 1; overflow: hidden; border-radius: 12px; background: linear-gradient(145deg, #fbfaf7, #eee8dd); }
+      object { display: block; width: 96%; max-width: 100%; height: 96%; color: #171614; }
+      h3 { margin: 11px 0 2px; font-size: 15px; letter-spacing: -.01em; }
+      .card p { margin: 0; color: #777067; font-size: 12px; }
+      @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+      @media (max-width: 540px) { body { padding: 16px; } header { align-items: start; flex-direction: column; } .role { padding: 14px; border-radius: 22px; } .role-heading { align-items: start; flex-direction: column; } .grid { grid-template-columns: minmax(0, 1fr); } button { width: 100%; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header><div><h1>Family ↔ Work</h1><p class="intro">Six people, two complete forms each, and both transition directions. Family identity is shown through independent home life—not through holding a child.</p></div></header>
+      <section class="role" aria-labelledby="mother-title"><div class="role-heading"><div><span>Family member</span><h2 id="mother-title">Mother</h2></div><button type="button" data-replay="mother">Replay transitions</button></div><div class="grid" data-role="mother"><article class="card"><div class="stage"><object data="mother/family.svg" type="image/svg+xml" aria-label="Mother — Family form"></object></div><h3>Family form</h3><p>Cooking at home</p></article>
+<article class="card"><div class="stage"><object data="mother/work.svg" type="image/svg+xml" aria-label="Mother — Work form"></object></div><h3>Work form</h3><p>Office professional</p></article>
+<article class="card"><div class="stage"><object data="mother/family-to-work.svg" type="image/svg+xml" aria-label="Mother — Family → Work"></object></div><h3>Family → Work</h3><p>Forward transition</p></article>
+<article class="card"><div class="stage"><object data="mother/work-to-family.svg" type="image/svg+xml" aria-label="Mother — Work → Family"></object></div><h3>Work → Family</h3><p>Reverse transition</p></article></div></section><section class="role" aria-labelledby="father-title"><div class="role-heading"><div><span>Family member</span><h2 id="father-title">Father</h2></div><button type="button" data-replay="father">Replay transitions</button></div><div class="grid" data-role="father"><article class="card"><div class="stage"><object data="father/family.svg" type="image/svg+xml" aria-label="Father — Family form"></object></div><h3>Family form</h3><p>Home repair</p></article>
+<article class="card"><div class="stage"><object data="father/work.svg" type="image/svg+xml" aria-label="Father — Work form"></object></div><h3>Work form</h3><p>Site engineer</p></article>
+<article class="card"><div class="stage"><object data="father/family-to-work.svg" type="image/svg+xml" aria-label="Father — Family → Work"></object></div><h3>Family → Work</h3><p>Forward transition</p></article>
+<article class="card"><div class="stage"><object data="father/work-to-family.svg" type="image/svg+xml" aria-label="Father — Work → Family"></object></div><h3>Work → Family</h3><p>Reverse transition</p></article></div></section><section class="role" aria-labelledby="daughter-title"><div class="role-heading"><div><span>Family member</span><h2 id="daughter-title">Daughter</h2></div><button type="button" data-replay="daughter">Replay transitions</button></div><div class="grid" data-role="daughter"><article class="card"><div class="stage"><object data="daughter/family.svg" type="image/svg+xml" aria-label="Daughter — Family form"></object></div><h3>Family form</h3><p>Reading at home</p></article>
+<article class="card"><div class="stage"><object data="daughter/work.svg" type="image/svg+xml" aria-label="Daughter — Work form"></object></div><h3>Work form</h3><p>Laboratory scientist</p></article>
+<article class="card"><div class="stage"><object data="daughter/family-to-work.svg" type="image/svg+xml" aria-label="Daughter — Family → Work"></object></div><h3>Family → Work</h3><p>Forward transition</p></article>
+<article class="card"><div class="stage"><object data="daughter/work-to-family.svg" type="image/svg+xml" aria-label="Daughter — Work → Family"></object></div><h3>Work → Family</h3><p>Reverse transition</p></article></div></section><section class="role" aria-labelledby="son-title"><div class="role-heading"><div><span>Family member</span><h2 id="son-title">Son</h2></div><button type="button" data-replay="son">Replay transitions</button></div><div class="grid" data-role="son"><article class="card"><div class="stage"><object data="son/family.svg" type="image/svg+xml" aria-label="Son — Family form"></object></div><h3>Family form</h3><p>Skateboarding</p></article>
+<article class="card"><div class="stage"><object data="son/work.svg" type="image/svg+xml" aria-label="Son — Work form"></object></div><h3>Work form</h3><p>Photographer</p></article>
+<article class="card"><div class="stage"><object data="son/family-to-work.svg" type="image/svg+xml" aria-label="Son — Family → Work"></object></div><h3>Family → Work</h3><p>Forward transition</p></article>
+<article class="card"><div class="stage"><object data="son/work-to-family.svg" type="image/svg+xml" aria-label="Son — Work → Family"></object></div><h3>Work → Family</h3><p>Reverse transition</p></article></div></section><section class="role" aria-labelledby="grandfather-title"><div class="role-heading"><div><span>Family member</span><h2 id="grandfather-title">Grandfather</h2></div><button type="button" data-replay="grandfather">Replay transitions</button></div><div class="grid" data-role="grandfather"><article class="card"><div class="stage"><object data="grandfather/family.svg" type="image/svg+xml" aria-label="Grandfather — Family form"></object></div><h3>Family form</h3><p>Daily home life</p></article>
+<article class="card"><div class="stage"><object data="grandfather/work.svg" type="image/svg+xml" aria-label="Grandfather — Work form"></object></div><h3>Work form</h3><p>Teacher and mentor</p></article>
+<article class="card"><div class="stage"><object data="grandfather/family-to-work.svg" type="image/svg+xml" aria-label="Grandfather — Family → Work"></object></div><h3>Family → Work</h3><p>Forward transition</p></article>
+<article class="card"><div class="stage"><object data="grandfather/work-to-family.svg" type="image/svg+xml" aria-label="Grandfather — Work → Family"></object></div><h3>Work → Family</h3><p>Reverse transition</p></article></div></section><section class="role" aria-labelledby="grandmother-title"><div class="role-heading"><div><span>Family member</span><h2 id="grandmother-title">Grandmother</h2></div><button type="button" data-replay="grandmother">Replay transitions</button></div><div class="grid" data-role="grandmother"><article class="card"><div class="stage"><object data="grandmother/family.svg" type="image/svg+xml" aria-label="Grandmother — Family form"></object></div><h3>Family form</h3><p>Knitting at home</p></article>
+<article class="card"><div class="stage"><object data="grandmother/work.svg" type="image/svg+xml" aria-label="Grandmother — Work form"></object></div><h3>Work form</h3><p>Professional tailor</p></article>
+<article class="card"><div class="stage"><object data="grandmother/family-to-work.svg" type="image/svg+xml" aria-label="Grandmother — Family → Work"></object></div><h3>Family → Work</h3><p>Forward transition</p></article>
+<article class="card"><div class="stage"><object data="grandmother/work-to-family.svg" type="image/svg+xml" aria-label="Grandmother — Work → Family"></object></div><h3>Work → Family</h3><p>Reverse transition</p></article></div></section>
+    </main>
+    <script>
+      document.querySelectorAll('[data-replay]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const role = button.dataset.replay;
+          document.querySelectorAll(`[data-role="${role}"] object`).forEach((object) => {
+            if (!object.data.includes('-to-')) return;
+            const source = object.data.split('?')[0];
+            object.data = `${source}?replay=${Date.now()}`;
+          });
+        });
+      });
+      if (new URLSearchParams(location.search).has('qa')) {
+        document.documentElement.dataset.viewportWidth = String(window.innerWidth);
+        document.documentElement.dataset.scrollWidth = String(document.documentElement.scrollWidth);
+      }
+    </script>
+  </body>
+</html>

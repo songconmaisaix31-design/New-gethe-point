@@ -1,0 +1,81 @@
+aimrt:
+  plugin:
+    plugins:
+      - name: net_plugin
+        path: ./libaimrt_net_plugin.so
+        options:
+          thread_num: 2
+          http_options:
+            listen_ip: 127.0.0.1
+            listen_port: 50080
+      - name: echo_plugin
+        path: ./libaimrt_echo_plugin.so
+        options:
+          type_support_pkgs:
+            - path: ./libsensor_pb_ts.so
+          topic_meta_list:
+            - topic_name: /sim/a3/neck_joint_state
+              msg_type: pb:aimrt.protocols.sensor.JointStateArray
+              echo_type: json
+  log:
+    core_lvl: INFO
+    backends:
+      - type: console
+  executor:
+    executors:
+      - name: gui_thread
+        type: simple_thread
+      - name: sim_thread
+        type: asio_thread
+        options:
+          thread_num: 1
+      - name: work_thread_pool
+        type: asio_thread
+        options:
+          thread_num: 2
+  channel:
+    backends:
+      - type: local
+      - type: http
+    sub_topics_options:
+      - topic_name: /sim/a3/neck_joint_command
+        enable_backends: [http, local]
+      - topic_name: /sim/a3/neck_joint_state
+        enable_backends: [local]
+    pub_topics_options:
+      - topic_name: /sim/a3/neck_joint_state
+        enable_backends: [local]
+  module:
+    pkgs:
+      - path: ./libmujoco_sim_pkg.so
+        enable_modules: [MujocoSimModule]
+    modules:
+      - name: MujocoSimModule
+        log_lvl: INFO
+
+MujocoSimModule:
+  simulation_model_path: ./install/bin/cfg/model/a3_t2d5/mjcf/a3_t2d5.xml
+  sim_executor: sim_thread
+  gui_executor: gui_thread
+  default_tracking_camera_body: torso_Link
+  default_camera_distance: 3.2
+  subscriber_options:
+    - topic: /sim/a3/neck_joint_command
+      type: joint_actuator
+      options:
+        joints:
+          - name: head_yaw_joint
+            bind_joint: head_yaw_joint
+          - name: head_pitch_joint
+            bind_joint: head_pitch_joint
+  publisher_options:
+    - topic: /sim/a3/neck_joint_state
+      frequency: 2
+      executor: work_thread_pool
+      type: joint_sensor
+      options:
+        joints:
+          - name: head_yaw_joint
+            bind_joint: head_yaw_joint
+          - name: head_pitch_joint
+            bind_joint: head_pitch_joint

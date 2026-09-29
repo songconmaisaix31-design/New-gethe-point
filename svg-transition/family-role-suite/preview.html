@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Family Role Silhouette Suite</title>
+    <style>
+      :root { color-scheme: light; font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #181714; background: #f4f1eb; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; padding: 32px; }
+      main { width: 100%; max-width: 1160px; min-width: 0; margin: 0 auto; }
+      h1 { margin: 0 0 8px; font-size: clamp(28px, 4vw, 48px); letter-spacing: -.045em; }
+      .intro { margin: 0 0 26px; color: #68635b; }
+      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; min-width: 0; }
+      .card { width: 100%; min-width: 0; padding: 18px; border: 1px solid #ded9cf; border-radius: 24px; background: #fff; box-shadow: 0 18px 50px rgba(46, 38, 27, .08); }
+      .stage { display: grid; place-items: center; width: 100%; min-width: 0; aspect-ratio: 1; overflow: hidden; border-radius: 16px; background: linear-gradient(145deg, #fbfaf7, #eee9df); }
+      object { display: block; width: 94%; max-width: 100%; min-width: 0; height: 94%; color: #171614; }
+      h2 { margin: 14px 0 2px; font-size: 18px; letter-spacing: -.02em; }
+      .cue { margin: 0; color: #746e65; font-size: 14px; }
+      @media (max-width: 820px) { body { padding: 22px; } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+      @media (max-width: 540px) { body { padding: 20px; } .grid { grid-template-columns: minmax(0, 1fr); } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Family role silhouettes</h1>
+      <p class="intro">Six independent identities, one shared visual language.</p>
+      <section class="grid" aria-label="Family role icon suite">
+        <article class="card"><div class="stage"><object data="../working-woman-mother/mother.svg" type="image/svg+xml" aria-label="Mother cooking"></object></div><h2>Mother</h2><p class="cue">Apron · saucepan · steam</p></article>
+        <article class="card"><div class="stage"><object data="father.svg" type="image/svg+xml" aria-label="Father doing home repairs"></object></div><h2>Father</h2><p class="cue">Toolbox · wrench</p></article>
+        <article class="card"><div class="stage"><object data="daughter.svg" type="image/svg+xml" aria-label="Young woman reading"></object></div><h2>Daughter</h2><p class="cue">Open book · ponytail</p></article>
+        <article class="card"><div class="stage"><object data="son.svg" type="image/svg+xml" aria-label="Young man with skateboard"></object></div><h2>Son</h2><p class="cue">Skateboard · cap · headphones</p></article>
+        <article class="card"><div class="stage"><object data="grandfather.svg" type="image/svg+xml" aria-label="Grandfather with walking cane"></object></div><h2>Grandfather</h2><p class="cue">Glasses · cane · cardigan</p></article>
+        <article class="card"><div class="stage"><object data="grandmother.svg" type="image/svg+xml" aria-label="Grandmother knitting"></object></div><h2>Grandmother</h2><p class="cue">Glasses · shawl · yarn</p></article>
+      </section>
+    </main>
+  </body>
+</html>

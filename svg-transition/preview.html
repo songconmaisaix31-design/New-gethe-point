@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SVG Transition Preview</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        background: #f4f3ef;
+        color: #191816;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 32px; }
+      main { width: min(1040px, 100%); }
+      header { margin-bottom: 24px; }
+      h1 { margin: 0 0 6px; font-size: clamp(24px, 4vw, 40px); letter-spacing: -.04em; }
+      p { margin: 0; color: #6a665f; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+      .card { min-width: 0; border: 1px solid #dedbd3; border-radius: 24px; background: #fff; padding: 20px; box-shadow: 0 18px 50px rgba(42, 37, 29, .08); }
+      .stage { display: grid; place-items: center; width: 100%; aspect-ratio: 1; border-radius: 16px; background: linear-gradient(145deg, #faf9f6, #eeece6); overflow: hidden; }
+      object { width: 86%; height: 86%; color: #191816; }
+      .controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 16px; }
+      .label { font-weight: 650; letter-spacing: -.02em; }
+      button { border: 0; border-radius: 999px; background: #191816; color: #fff; padding: 10px 16px; font: inherit; cursor: pointer; }
+      button:hover { background: #3c3934; }
+      button:focus-visible { outline: 3px solid #9d8cff; outline-offset: 3px; }
+      @media (max-width: 720px) {
+        body { display: block; padding: 20px; }
+        .grid { grid-template-columns: minmax(0, 1fr); }
+        .controls { flex-wrap: wrap; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Bidirectional icon transition</h1>
+        <p>Each SVG plays once and holds on its destination state.</p>
+      </header>
+      <section class="grid" aria-label="Animation previews">
+        <article class="card">
+          <div class="stage"><object id="woman-to-family" data="woman-to-family.svg" type="image/svg+xml" aria-label="Working woman to family animation"></object></div>
+          <div class="controls"><span class="label">Woman → Family</span><button data-replay="woman-to-family">Replay</button></div>
+        </article>
+        <article class="card">
+          <div class="stage"><object id="family-to-woman" data="family-to-woman.svg" type="image/svg+xml" aria-label="Family to working woman animation"></object></div>
+          <div class="controls"><span class="label">Family → Woman</span><button data-replay="family-to-woman">Replay</button></div>
+        </article>
+      </section>
+    </main>
+    <script>
+      document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-replay]");
+        if (!button) return;
+        const animation = document.getElementById(button.dataset.replay);
+        const source = animation.data;
+        animation.data = "about:blank";
+        requestAnimationFrame(() => { animation.data = source; });
+      });
+    </script>
+  </body>
+</html>

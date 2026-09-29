@@ -1,0 +1,20 @@
+{
+  "joints": [
+    {
+      "name": "head_yaw_joint",
+      "position": 0.1,
+      "velocity": 0.0,
+      "effort": 0.0,
+      "stiffness": 5.0,
+      "damping": 1.0
+    },
+    {
+      "name": "head_pitch_joint",
+      "position": -0.436332,
+      "velocity": 0.0,
+      "effort": 0.0,
+      "stiffness": 5.0,
+      "damping": 1.0
+    }
+  ]
+}
